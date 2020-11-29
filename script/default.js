@@ -45,7 +45,7 @@ document.querySelector('#submit').addEventListener('click', () => {
     let panel = document.querySelectorAll('.group-panel');
     panel.forEach(item => {
         let aDamage = Number(item.querySelector('[data-input="aDamage"]').value) || 1;
-        let cRate = (Number(item.querySelector('[data-input="cRate"]').value)) / 100 || 1;
+        let cRate = (Number(item.querySelector('[data-input="cRate"]').value)) / 100 || 0;
             cRate = (cRate - bAntiRate > 1) ? 1 : cRate - bAntiRate;
         let cDamage = Number(item.querySelector('[data-input="cDamage"]').value) || 1;
         let bDamage = Number(item.querySelector('[data-input="bDamage"]').value) / 100 || 0;
