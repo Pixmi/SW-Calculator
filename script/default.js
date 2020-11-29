@@ -16,8 +16,8 @@ addPanel.addEventListener('click', () => {
                     <input type="number" class="form-control form-control-sm" data-input="aDamage" value="" />
                 </div>
                 <div class="mb-2">
-                    <label>爆擊率</label>
-                    <input type="number" class="form-control form-control-sm" data-input="cRate" value="" />
+                    <label>爆擊率 %</label>
+                    <input type="number" class="form-control form-control-sm" data-input="cRate" value="" placeholder="不含隱藏爆率" />
                 </div>
                 <div class="mb-2">
                     <label>爆擊傷害</label>
