@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Soulworder Damage Calculator">
-    <meta name="theme-color" content="#3eaf7c">
+    <meta name="theme-color" content="#efefef">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="msapplication-TileImage" content="/image/favicon/apple-touch-icon.png">
@@ -41,6 +41,19 @@
         .group-panel[data-index="3"] + [data-index="last"] {
             display: none;
         }
+
+        .group-title {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .group-title:hover,
+        .group-title:focus {
+            border: none;
+            border-color: #007bff !important;
+        }
     </style>
 </head>
 
@@ -48,7 +61,7 @@
     <nav class="navbar sticky-top navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Soulworder Damage Calculator</a>
     </nav>
-    <main class="main mt-3">
+    <main class="main mt-3 pb-4">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md">
@@ -73,7 +86,7 @@
             <div class="row">
                 <div class="group-panel col-12 col-sm-6 col-md-4 col-lg-3" data-index="0">
                     <div class="card mb-3">
-                        <div class="card-header">Group 1.</div>
+                        <div class="card-header"><input type="text" class="group-title border-bottom" value="Group 1"></div>
                         <div class="card-body">
                             <div class="mb-2">
                                 <label>攻擊力</label>

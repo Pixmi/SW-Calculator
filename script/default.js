@@ -9,7 +9,7 @@ addPanel.addEventListener('click', () => {
     newPanel.dataset.index = $index;
     newPanel.innerHTML = `
         <div class="card mb-3">
-            <div class="card-header">Group ${$index + 1}.</div>
+            <div class="card-header"><input type="text" class="group-title border-bottom" value="Group ${$index + 1}"></div>
             <div class="card-body">
                 <div class="mb-2">
                     <label>攻擊力</label>
@@ -66,17 +66,18 @@ document.querySelector('#submit').addEventListener('click', () => {
         while (compare.firstChild) {
             compare.removeChild(compare.firstChild);
         }
-        groupDamage = document.querySelectorAll('.damage');
-        groupDamage.forEach((item, index) => {
+        let origin = Number(panel[0].querySelector('span.damage').dataset.value);
+        let title = [];
+        panel.forEach((item, index) => {
+            title[index] = panel[index].querySelector('.group-title').value;
             if (index > 0) {
-                let origin = groupDamage[0].dataset.value;
-                let value = item.dataset.value;
+                let value = Number(item.querySelector('span.damage').dataset.value);
                 let rate = ((value / origin - 1) * 100).toFixed(2);
                 let text = document.createElement('p');
                 if (rate > 0) {
-                    text.innerHTML = `<span class="text-primary">Group ${index + 1}</span> 比 <span class="text-danger">Group 1</span> 增加 ${rate}% 傷害。`
+                    text.innerHTML = `<span class="text-primary">${title[index]}</span> 比 <span class="text-danger">${title[0]}</span> 增加 ${rate}% 傷害。`
                 } else {
-                    text.innerHTML = `<span class="text-primary">Group ${index + 1}</span> 比 <span class="text-danger">Group 1</span> 減少 ${rate.replace('-', '')}% 傷害。`
+                    text.innerHTML = `<span class="text-primary">${title[index]}</span> 比 <span class="text-danger">${title[0]}</span> 減少 ${rate.replace('-', '')}% 傷害。`
                 }
                 compare.append(text);
             }
