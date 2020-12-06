@@ -9,7 +9,16 @@ addPanel.addEventListener('click', () => {
     newPanel.dataset.index = $index;
     newPanel.innerHTML = `
         <div class="card mb-3">
-            <div class="card-header"><input type="text" class="group-title border-bottom" value="Group ${$index + 1}"></div>
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" class="group-title border-bottom" value="Group ${$index + 1}">
+                    </div>
+                    <div class="col-auto pl-0">
+                        <button type="button" class="close" data-click="removeNode"><span aria-hidden="true" data-click="removeNode">&times;</span></button>
+                    </div>
+                </div>
+            </div>
             <div class="card-body">
                 <div class="mb-2">
                     <label>攻擊力</label>
@@ -36,6 +45,24 @@ addPanel.addEventListener('click', () => {
             </div>
         </div>`;
     panel[$index - 1].after(newPanel);
+})
+
+document.querySelector('main').addEventListener('click', (event) => {
+    let target = event.target;
+    let active = ('click' in target.dataset) ? target.dataset.click : false;
+    if (active) {
+        switch (active) {
+            case 'removeNode':
+                let panel = target.closest('.group-panel');
+                panel.remove();
+                document.querySelectorAll('.group-panel').forEach((item, index) => {
+                    item.dataset.index = index;
+                });
+                break;
+                
+            default: break;
+        }
+    }
 })
 
 document.querySelector('#submit').addEventListener('click', () => {
